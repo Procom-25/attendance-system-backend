@@ -43,6 +43,6 @@ const eventSchema = new mongoose.Schema({
   eventEndTime: { type: Date, required: true },
 });
 
-const Event = mongoose.model("Event", eventSchema);
+const Event = mongoose.model("Attendence", eventSchema);
 
 export default Event;
