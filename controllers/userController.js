@@ -24,11 +24,11 @@ export const verify = async (req, res) => {
     const teamIndex = event.registeredTeams.findIndex(
       (team) => team.team_code === teamcode
     );
-   
+
     if (teamIndex === -1) {
       return res.status(404).json({ message: "Team Not Found" });
     }
-    console.log(latitude,longitude)
+    console.log(latitude, longitude);
     const isInside = await isInsideAnyArea(latitude, longitude);
 
     if (!isInside) {
@@ -36,9 +36,9 @@ export const verify = async (req, res) => {
         .status(403)
         .json({ message: "You are not inside the valid event location" });
     }
- if (event.registeredTeams[teamIndex].is_present) {
-   return res.status(400).json({ message: "Attendance already marked" });
- }
+    if (event.registeredTeams[teamIndex].is_present) {
+      return res.status(200).json({ message: "Attendance already marked" });
+    }
     event.registeredTeams[teamIndex].is_present = true;
     await event.save();
 
