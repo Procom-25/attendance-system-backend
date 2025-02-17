@@ -3,22 +3,22 @@ import isInsideAnyArea from "../utils/verifyLocation.js";
 
 export const getTopEvents = async (req, res) => {
     const { x } = req.params;
-    const limit = parseInt(x, 10);
-  
+    const limit = parseInt(x, 10); 
+
     if (isNaN(limit) || limit <= 0) {
-      return res.status(400).json({ message: "Invalid number of events requested" });
+        return res.status(400).json({ message: "Invalid number of events requested" });
     }
-  
+
     try {
-      const events = await Event.find({}, { title: 1, department: 1, eventStartTime: 1, eventEndTime: 1 })
-        .sort({ eventStartTime: -1 })
-        .limit(limit);
-  
-      return res.status(200).json(events);
+        const events = await Event.find({})
+            .sort({ eventStartTime: -1 })
+            .limit(limit);
+
+        return res.status(200).json(events);
     } catch (error) {
-      console.error("Error fetching top events:", error);
-      return res.status(500).json({ message: "Internal Server Error" });
+        console.error("Error fetching top events:", error);
+        return res.status(500).json({ message: "Internal Server Error" });
     }
-  };
+};
 
 export default getTopEvents;

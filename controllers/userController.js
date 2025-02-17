@@ -11,8 +11,8 @@ export const verify = async (req, res) => {
     const currentTime = new Date();
     const event = await Event.findOne({
       "registeredTeams.team_code": teamcode,
-      eventStartTime: { $lte: currentTime },
-      eventEndTime: { $gte: currentTime },
+      // eventStartTime: { $lte: currentTime },
+      // eventEndTime: { $gte: currentTime },
     });
 
     if (!event) {
@@ -24,10 +24,11 @@ export const verify = async (req, res) => {
     const teamIndex = event.registeredTeams.findIndex(
       (team) => team.team_code === teamcode
     );
-
+   
     if (teamIndex === -1) {
       return res.status(404).json({ message: "Team Not Found" });
     }
+    console.log(latitude,longitude)
     const isInside = await isInsideAnyArea(latitude, longitude);
 
     if (!isInside) {

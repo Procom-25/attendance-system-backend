@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import userRoutes from './routes/userRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import testRoutes from './routes/testRoutes.js'
-
+import Event from './models/eventModel.js';
 connectdb();
 const app=express();
 app.use(cors());
