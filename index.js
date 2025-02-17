@@ -12,13 +12,7 @@ import Event from './models/eventModel.js';
 connectdb();
 const app=express();
 
-const corsOptions = {
-    origin: 'https://attendence-coral.vercel.app',
-    methods: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  };
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
