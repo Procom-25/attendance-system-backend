@@ -10,6 +10,13 @@ const eeArea = [
   [24.85623, 67.264025],
   [24.857074, 67.263874],
 ];
+
+const lab7Area=[[
+  24.856321, 67.263942],
+  [24.856501, 67.263891],
+  [24.856401, 67.264216],
+  [24.856552, 67.264182],
+  ];
 // RAY Casting Algorithm 
 const isPointInPolygon = (x, y, polygon) => {
   let inside = false;
@@ -28,6 +35,6 @@ const isPointInPolygon = (x, y, polygon) => {
 };
 
 const isInsideAnyArea = (x, y) => {
-  return isPointInPolygon(x, y, CsArea) || isPointInPolygon(x, y, eeArea);
+  return isPointInPolygon(x, y, CsArea) || isPointInPolygon(x, y, eeArea) || isPointInPolygon(x,y,lab7Area);
 };
 export default isInsideAnyArea;
