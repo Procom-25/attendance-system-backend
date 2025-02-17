@@ -8,9 +8,17 @@ import userRoutes from './routes/userRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import testRoutes from './routes/testRoutes.js'
 import Event from './models/eventModel.js';
+
 connectdb();
 const app=express();
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://attendence-coral.vercel.app',
+    methods: '*',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
