@@ -13,7 +13,7 @@ connectdb();
 const app=express();
 
 const corsOptions = {
-    origin: 'https://attendence-coral.vercel.app',
+    origin: 'https://attendance.procom.com.pk/',
     methods: '*',
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
