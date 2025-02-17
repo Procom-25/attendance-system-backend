@@ -36,7 +36,9 @@ export const verify = async (req, res) => {
         .status(403)
         .json({ message: "You are not inside the valid event location" });
     }
-
+ if (event.registeredTeams[teamIndex].is_present) {
+   return res.status(400).json({ message: "Attendance already marked" });
+ }
     event.registeredTeams[teamIndex].is_present = true;
     await event.save();
 
